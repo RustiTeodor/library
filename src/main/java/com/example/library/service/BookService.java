@@ -1,5 +1,6 @@
 package com.example.library.service;
 
+import com.example.library.model.BookDetails;
 import com.example.library.repository.BookRepository;
 import org.springframework.stereotype.Service;
 
@@ -14,16 +15,16 @@ public class BookService {
         this.bookRepository = bookRepository;
     }
 
-    public List<Book> getAllBooks() {
+    public BookDetails saveBook(BookDetails book) {
+        return bookRepository.save(book);
+    }
+
+    public List<BookDetails> getAllBooks() {
         return bookRepository.findAll();
     }
 
-    public Optional<Book> getBookById(String id) {
+    public Optional<BookDetails> getBookById(String id) {
         return bookRepository.findById(id);
-    }
-
-    public Book createBook(Book book) {
-        return bookRepository.save(book);
     }
 
     public void deleteBook(String id) {

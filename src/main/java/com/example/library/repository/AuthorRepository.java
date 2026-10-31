@@ -9,21 +9,20 @@ import java.util.Optional;
 
 @Repository
 public class AuthorRepository {
-    private List<Author> authors = new ArrayList<>();
+    private final List<Author> authors = new ArrayList<>();
 
     public Author save(Author author) {
+        delete(author.getId());
         authors.add(author);
         return author;
     }
 
     public List<Author> findAll() {
-        return authors;
+        return new ArrayList<>(authors);
     }
 
     public Optional<Author> findById(String id) {
-        return authors.stream()
-                .filter(a -> a.getId().equals(id))
-                .findFirst();
+        return authors.stream().filter(a -> a.getId().equals(id)).findFirst();
     }
 
     public void delete(String id) {

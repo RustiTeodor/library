@@ -28,7 +28,7 @@ public class AuthorController {
 
     @PostMapping
     public Author createAuthor(@RequestBody Author author) {
-        return authorService.createAuthor(author);
+        return authorService.saveAuthor(author);
     }
 
     @DeleteMapping("/{id}")

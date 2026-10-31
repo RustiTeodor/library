@@ -1,5 +1,6 @@
 package com.example.library.repository;
 
+import com.example.library.model.BookDetails;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
@@ -8,21 +9,20 @@ import java.util.Optional;
 
 @Repository
 public class BookRepository {
-    private List<Book> books = new ArrayList<>();
+    private final List<BookDetails> books = new ArrayList<>();
 
-    public Book save(Book book) {
+    public BookDetails save(BookDetails book) {
+        delete(book.getId());
         books.add(book);
         return book;
     }
 
-    public List<Book> findAll() {
-        return books;
+    public List<BookDetails> findAll() {
+        return new ArrayList<>(books);
     }
 
-    public Optional<Book> findById(String id) {
-        return books.stream()
-                .filter(b -> b.getId().equals(id))
-                .findFirst();
+    public Optional<BookDetails> findById(String id) {
+        return books.stream().filter(b -> b.getId().equals(id)).findFirst();
     }
 
     public void delete(String id) {
