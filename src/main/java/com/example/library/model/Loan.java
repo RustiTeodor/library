@@ -1,70 +1,36 @@
 package com.example.library.model;
 
-import java.time.LocalDate;
+import java.util.List;
 
 public class Loan {
     private String id;
     private String memberId;
-    private String bookId;
-    private LocalDate borrowDate;
-    private LocalDate dueDate;
-    private String status; // de exemplu: "ACTIVE", "RETURNED"
+    private String date;
+    private List<Reservation> reservations;
+    private List<ReadableItem> items;
 
-    public Loan(String id, String memberId, String bookId, LocalDate borrowDate, LocalDate dueDate, String status) {
+    public Loan() {}
+
+    public Loan(String id, String memberId, String date, List<Reservation> reservations, List<ReadableItem> items) {
         this.id = id;
         this.memberId = memberId;
-        this.bookId = bookId;
-        this.borrowDate = borrowDate;
-        this.dueDate = dueDate;
-        this.status = status;
+        this.date = date;
+        this.reservations = reservations;
+        this.items = items;
     }
 
-    // Getters și Setters
-    public String getId() {
-        return id;
-    }
+    public String getId() { return id; }
+    public void setId(String id) { this.id = id; }
 
-    public void setId(String id) {
-        this.id = id;
-    }
+    public String getMemberId() { return memberId; }
+    public void setMemberId(String memberId) { this.memberId = memberId; }
 
-    public String getMemberId() {
-        return memberId;
-    }
+    public String getDate() { return date; }
+    public void setDate(String date) { this.date = date; }
 
-    public void setMemberId(String memberId) {
-        this.memberId = memberId;
-    }
+    public List<Reservation> getReservations() { return reservations; }
+    public void setReservations(List<Reservation> reservations) { this.reservations = reservations; }
 
-    public String getBookId() {
-        return bookId;
-    }
-
-    public void setBookId(String bookId) {
-        this.bookId = bookId;
-    }
-
-    public LocalDate getBorrowDate() {
-        return borrowDate;
-    }
-
-    public void setBorrowDate(LocalDate borrowDate) {
-        this.borrowDate = borrowDate;
-    }
-
-    public LocalDate getDueDate() {
-        return dueDate;
-    }
-
-    public void setDueDate(LocalDate dueDate) {
-        this.dueDate = dueDate;
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
+    public List<ReadableItem> getItems() { return items; }
+    public void setItems(List<ReadableItem> items) { this.items = items; }
 }
